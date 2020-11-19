@@ -589,3 +589,13 @@ def returnFooterDependencies():
                'popularCatagoriesDict': popularCatagoriesDict
                }
     return context
+
+# News letter
+@login_required
+@onlyDeveloper()
+def newsletter(request):
+    if request.method == 'POST':
+        # Add your mail function HERE
+        print(f"Subject - {request.POST['subject']}, Content - {request.POST['content']}, Mail sending...")
+
+    return render(request, 'website/newsletter.html')

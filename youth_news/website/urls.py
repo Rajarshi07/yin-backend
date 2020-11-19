@@ -71,6 +71,7 @@ urlpatterns = [
     path('add-catagory/', views.addCatagory, name="addCatagory"),
     path('change-tranding/<slug:slug>/', views.changeTranding, name="changeTranding"),
 
+    path('newsletter/', views.newsletter, name="newsletter"),
 
     path('my-profile/', views.myProfile, name="myProfile"),
 ]
