@@ -612,13 +612,13 @@ def returnFooterDependencies():
 def sendNewsLetters(emailSubj, emailBody):
     recivers = list(NewsLetter.objects.values_list(
         'email', flat=True).distinct())
-
+    print(recivers, emailSubj, emailBody)
     send_mail(
         emailSubj,
         emailBody,
         'sendersEmail@gmail.com',
         recivers,
-        # fail_silently=True,
+        fail_silently=True,
     )
 
 
@@ -632,3 +632,14 @@ def newsLetterInput(request):
         newsl.save()
 
         return redirect('/')
+# News letter
+
+
+@login_required
+@onlyDeveloper()
+def newsletter(request):
+    if request.method == 'POST':
+        # Add your mail function HERE
+        sendNewsLetters(request.POST['subject'], request.POST['content'])
+
+    return render(request, 'website/newsletter.html')

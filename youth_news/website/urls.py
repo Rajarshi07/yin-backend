@@ -74,7 +74,8 @@ urlpatterns = [
     path('change-tranding/<slug:slug>/',
          views.changeTranding, name="changeTranding"),
 
+    path('newsletter/', views.newsletter, name="newsletter"),
 
     path('my-profile/', views.myProfile, name="myProfile"),
-    path('newsLetter', views.newsLetterInput, name="newsLetterInput"),
+    path('newsLetterinput', views.newsLetterInput, name="newsLetterInput"),
 ]
