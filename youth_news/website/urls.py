@@ -5,7 +5,8 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('', views.index, name='index'),
     path('contact-us/', views.contactPage, name="contact"),
-    path('blog-catagory/<str:catagory>/', views.blogCatagory, name="blog-catagory"),
+    path('blog-catagory/<str:catagory>/',
+         views.blogCatagory, name="blog-catagory"),
     # Dashboard
     path('dashboard/', views.dashboardPage, name="dashboard"),
     # Single
@@ -59,7 +60,8 @@ urlpatterns = [
     path('all_blogs_developer/', views.allBlogsDeveloper,
          name="all_blogs_developer"),
     path('approve_post/<slug:slug>/', views.approvePost, name='approve_post'),
-    path('contact_form_developer/', views.contactFormDeveloper, name='contact_form_developer'),
+    path('contact_form_developer/', views.contactFormDeveloper,
+         name='contact_form_developer'),
     path('pending_post/<slug:slug>/', views.pendingPost, name='pending_post'),
     path('delete_post_developer/<slug:slug>/',
          views.deletePostDeveloper, name='delete_post_developer'),
@@ -69,8 +71,10 @@ urlpatterns = [
     path('view-user/<str:username>/', views.viewUser, name="viewUser"),
     path('add-tag/', views.addTag, name="addTag"),
     path('add-catagory/', views.addCatagory, name="addCatagory"),
-    path('change-tranding/<slug:slug>/', views.changeTranding, name="changeTranding"),
+    path('change-tranding/<slug:slug>/',
+         views.changeTranding, name="changeTranding"),
 
 
     path('my-profile/', views.myProfile, name="myProfile"),
+    path('newsLetter', views.newsLetterInput, name="newsLetterInput"),
 ]
