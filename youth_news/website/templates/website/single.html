@@ -80,7 +80,9 @@
                         <div class="col-lg-12">
                             <div class="banner-spot clearfix">
                                 <div class="banner-img">
-                                    <img src="{% static 'upload/banner_01.jpg' %}" alt="" class="img-fluid">
+                                    <a href="{{ads.ads2.url}}" target="_blank">
+                                        <img src="{{ads.ads2.rectangleImage.url}}" alt="Ads2" class="img-fluid" style="height: 125px;">
+                                    </a>
                                 </div><!-- end banner-img -->
                             </div><!-- end banner -->
                         </div><!-- end col -->
@@ -294,12 +296,14 @@
                         <h2 class="widget-title">Advertising</h2>
                         <div class="banner-spot clearfix">
                             <div class="banner-img">
-                                <img src="{% static 'upload/banner_03.jpg' %}" alt="" class="img-fluid">
+                                <a href="{{ads.ads1.url}}" target="_blank">
+                                    <img src="{{ads.ads1.squareImage.url}}" alt="Ads1" class="img-fluid" style="height: 255px;width: 255px;">
+                                </a>
                             </div><!-- end banner-img -->
                         </div><!-- end banner -->
                     </div><!-- end widget -->
 
-                    <div class="widget">
+                    <!-- <div class="widget">
                         <h2 class="widget-title">Instagram Feed</h2>
                         <div class="instagram-wrapper clearfix">
                             <a class="" href="#"><img src="{% static 'upload/insta_01.jpeg' %}" alt=""
@@ -312,8 +316,8 @@
                             <a href="#"><img src="{% static 'upload/insta_07.jpeg' %}" alt="" class="img-fluid"></a>
                             <a href="#"><img src="{% static 'upload/insta_08.jpeg' %}" alt="" class="img-fluid"></a>
                             <a href="#"><img src="{% static 'upload/insta_09.jpeg' %}" alt="" class="img-fluid"></a>
-                        </div><!-- end Instagram wrapper -->
-                    </div><!-- end widget -->
+                        </div>
+                    </div> -->
 
                     <div class="widget">
                         <h2 class="widget-title">Popular Categories</h2>

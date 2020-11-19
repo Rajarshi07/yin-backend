@@ -117,3 +117,20 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.comment
+
+
+# Ads Model
+class Advertisement(models.Model):
+    squareImage = models.ImageField(
+        upload_to='ads_image/', default="/ads_image/square_ads_default.png")
+    rectangleImage = models.ImageField(
+        upload_to='ads_image/', default="/ads_image/rectangle_ads_default.png")
+    url = models.URLField(max_length=200, null=True, blank=True)
+    estimatedView = models.IntegerField(default=0)
+    startDate = models.DateTimeField(auto_now_add=True)
+    endDate = models.DateTimeField(null=False, blank=False)
+    catagories = models.ManyToManyField(Catagory, blank=True)
+    premium = models.BooleanField(default=False)
+
+    def __str__(self):
+        return str(self.url)

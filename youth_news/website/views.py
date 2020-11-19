@@ -2,10 +2,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import CreateUserForm, PostForm, AuthorForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
-from .models import Contact, BlogPost, Catagory, Author, Comment, Tag
+from .models import Contact, BlogPost, Catagory, Author, Comment, Tag, Advertisement
 from .decorators import unauthentiated_user, notDeveloper, onlyDeveloper
 from django.contrib.auth.models import User, Group
 from django.core.paginator import Paginator
+import random
 
 
 def index(request):
@@ -23,6 +24,7 @@ def index(request):
     context = returnFooterDependencies()
     context['trandingPosts'] = trandingBlogs
     context['trendingPostContent'] = trandingCatagoriesPosts
+    context['ads'] = homePageAds()
     return render(request, 'website/index.html', context)
 
 
@@ -143,6 +145,7 @@ def blog(request, slug):
     context['realatedPost'] = realatedPost
     context['prevNextPost'] = prevNextPost
     context['comments'] = comments
+    context['ads'] = blogPageAds()
     return render(request, 'website/single.html', context)
 
 
@@ -599,3 +602,30 @@ def newsletter(request):
         print(f"Subject - {request.POST['subject']}, Content - {request.POST['content']}, Mail sending...")
 
     return render(request, 'website/newsletter.html')
+
+# Advertisement
+def homePageAds():
+    # fetch random 2 premium ads and show reactange ads image
+    ads = Advertisement.objects.filter(premium=True)
+    ads1 = random.choices(ads)[0]
+    ads2 = random.choices(ads)[0]
+    # diff ads
+    while(ads2 == ads1):
+        ads2 = random.choices(ads)[0]
+    
+    # print(ads1, ads2)
+    context = {'ads1':ads1, 'ads2':ads2}
+    return context
+
+def blogPageAds():
+    # fetch random 2 premium ads and show square and rectangle ads image
+    ads = Advertisement.objects.all()
+    ads1 = random.choices(ads)[0]
+    ads2 = random.choices(ads)[0]
+    # diff ads
+    while(ads2 == ads1):
+        ads2 = random.choices(ads)[0]
+    
+    # print(ads1, ads2)
+    context = {'ads1':ads1, 'ads2':ads2}
+    return context
